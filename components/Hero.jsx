@@ -23,13 +23,21 @@ export default function Hero(props) {
                 <div className="flex w-[50%] -500:w-[90%] justify-between">
                     {/* imdb rating */}
                     <div className="flex gap-[4px] items-center">
-                        <img src="/images/imdb.svg" className="h-[100%]" alt="" />
+                        <img
+                            src="/images/imdb.svg"
+                            className="h-[100%]"
+                            alt=""
+                        />
                         <p className="text-sm">86.0/100</p>
                     </div>
 
                     {/* rotten tomato rating */}
                     <div className="flex gap-[4px] items-center">
-                        <img src="/images/tomato.svg" className="h-[100%]" alt="" />
+                        <img
+                            src="/images/tomato.svg"
+                            className="h-[100%]"
+                            alt=""
+                        />
                         <p className="text-sm">97%</p>
                     </div>
                 </div>

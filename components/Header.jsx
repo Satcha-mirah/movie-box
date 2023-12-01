@@ -11,8 +11,7 @@ export default function Header() {
             method: "GET",
             headers: {
                 accept: "application/json",
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTc5Yzk0ZDBiMDYxNzA2ZTMzNWE0NjZhMWEyZDVkNSIsInN1YiI6IjY0ZmYwZTg3ZWZlYTdhMDEzN2QxYmZhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9IvEzXnOqz4mp2KOOk36OFKHp8MLGjJlPUUJZSkI5Ao",
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
             },
         };
         fetch(
@@ -61,7 +60,11 @@ export default function Header() {
             {/* container for logo */}
             <div>
                 <img src="/images/logo.png" className="-720:hidden" alt="" />
-                <img src="/images/tv.svg" className="-720:block hidden" alt="" />
+                <img
+                    src="/images/tv.svg"
+                    className="-720:block hidden"
+                    alt=""
+                />
             </div>
 
             {/* container for search bar */}

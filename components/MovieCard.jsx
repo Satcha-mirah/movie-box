@@ -15,8 +15,7 @@ export default function MovieCard(props) {
             method: "GET",
             headers: {
                 accept: "application/json",
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTc5Yzk0ZDBiMDYxNzA2ZTMzNWE0NjZhMWEyZDVkNSIsInN1YiI6IjY0ZmYwZTg3ZWZlYTdhMDEzN2QxYmZhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9IvEzXnOqz4mp2KOOk36OFKHp8MLGjJlPUUJZSkI5Ao",
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
             },
         };
         fetch(
@@ -103,7 +102,11 @@ export default function MovieCard(props) {
                         <div className="flex w-[100%] justify-between">
                             {/* imdb rating */}
                             <div className="flex gap-[4px] items-center">
-                                <img src="/images/imdb.svg" className="h-[100%]" alt="" />
+                                <img
+                                    src="/images/imdb.svg"
+                                    className="h-[100%]"
+                                    alt=""
+                                />
                                 <p className="text-sm">
                                     {props.rating * 10}/100
                                 </p>
@@ -111,7 +114,11 @@ export default function MovieCard(props) {
 
                             {/* rotten tomato rating */}
                             <div className="flex gap-[4px] items-center">
-                                <img src="/images/tomato.svg" className="h-[100%]" alt="" />
+                                <img
+                                    src="/images/tomato.svg"
+                                    className="h-[100%]"
+                                    alt=""
+                                />
                                 <p className="text-sm">{props.rating * 10}%</p>
                             </div>
                         </div>

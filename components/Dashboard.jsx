@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function Dashboard() {
     const [navShown, setNavShown] = useState(false);
@@ -27,18 +28,24 @@ export default function Dashboard() {
                 }`}
             >
                 {/* top part of dashboard */}
-                <div className="flex items-center justify-start w-[90%] gap-4">
-                    <img src="/images/tv.svg" alt="" />
-                    <p className="font-bold text-xl">MovieBox</p>
-                </div>
+                <Link href="/">
+                    <div className="flex items-center justify-start w-[90%] gap-4">
+                        <img src="/images/tv.svg" alt="" />
+                        <p className="font-bold text-xl">MovieBox</p>
+                    </div>
+                </Link>
 
                 {/* lower part of dashboard */}
                 <div className="dashboard-lower items-center flex flex-col gap-6 w-[100%]">
                     {/* redirects */}
-                    <span className="">
-                        <img src="/images/home.svg" alt="" />
-                        <p className="font-bold text-[#666]">Home</p>
-                    </span>
+
+                    <Link href="/">
+                        <span className="flex flex-row items-center gap-4">
+                            <img src="/images/home.svg" alt="" />
+
+                            <p className="font-bold text-[#666]">Home</p>
+                        </span>
+                    </Link>
                     <span className="bg-softRed border-r-[4px] border-mainRed">
                         <img src="/images/movie-projector.svg" alt="" />
                         <p className="font-extrabold text-mainRed">Movies</p>
