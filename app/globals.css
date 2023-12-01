@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,600;9..40,700;9..40,800;9..40,900&display=swap");
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: white;
+}
+
+.search-results > a {
+    width: 90%;
+    position: relative;
+    z-index: 4;
+}
+
+.favorite {
+    backdrop-filter: blur(1px);
+    transition: 0.3s ease;
+}
+
+.favorite.active {
+    background-color: red !important;
+}
+
+.movie-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+    grid-auto-rows: 1fr;
+    gap: 80px;
+    justify-items: center;
+    align-items: start;
+    justify-content: center;
+}
+
+.dashboard-lower > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 15px 30px;
+}
+
+.dashboard {
+    transition: 0.3s;
+}
+
+.dashboard-hamburger div {
+    transition: 0.3s;
+}
+
+.dashboard-hamburger.active .bar-1 {
+    transform: translateY(4px) rotate(45deg);
+}
+.dashboard-hamburger.active .bar-2 {
+    transform: translateY(-5px) rotate(-45deg);
+}
