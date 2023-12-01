@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function (props) {
+export const MovieCardSearch = (props) => {
     const [genreEls, setGenreEls] = useState([]);
     const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -38,7 +38,7 @@ export default function (props) {
                 })
             )
             .catch((err) => console.error(err));
-    }, []);
+    }, [props.genreId]);
 
     return (
         <Link href={`/movies/${props.id}`}>
