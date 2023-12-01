@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export const MovieCardSearch = (props) => {
+export default function MovieCardSearch(props) {
     const [genreEls, setGenreEls] = useState([]);
     const [hasLoaded, setHasLoaded] = useState(false);
 
