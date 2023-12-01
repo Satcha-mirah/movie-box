@@ -115,8 +115,8 @@ export default function MovieDetails() {
 
                         {/* genres */}
                         <div className="text-mainRed text-sm font-bold flex gap-4 flex-wrap">
-                            {genreArr.map((genre) => (
-                                <p className="border-[1px] border-[#F8E7EB] rounded-[20px] p-2">
+                            {genreArr.map((genre, index) => (
+                                <p key={index} className="border-[1px] border-[#F8E7EB] rounded-[20px] p-2">
                                     {genre.name}
                                 </p>
                             ))}
