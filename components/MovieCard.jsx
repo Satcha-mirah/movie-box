@@ -38,7 +38,7 @@ export default function MovieCard(props) {
                 })
             )
             .catch((err) => console.error(err));
-    }, [props.genreId]);
+    }, []);
 
     return (
         <div className="relative">

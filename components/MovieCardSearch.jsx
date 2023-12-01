@@ -38,7 +38,7 @@ export default function MovieCardSearch(props) {
                 })
             )
             .catch((err) => console.error(err));
-    }, [props.genreId]);
+    }, []);
 
     return (
         <Link href={`/movies/${props.id}`}>
