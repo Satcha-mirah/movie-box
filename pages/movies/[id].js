@@ -15,6 +15,7 @@ export default function MovieDetails() {
         return `https://image.tmdb.org/t/p/original/${pic_path}`;
     }
 
+    
     useEffect(() => {
         if (id) {
             const details = {

@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <div className="font-main flex flex-col gap-[100px] w-[100%] justify-center items-center">
             <Hero>
-                <Header />
+            <Header />
             </Hero>
             <MovieList>
                 <Footer />

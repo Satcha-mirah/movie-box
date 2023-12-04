@@ -1,7 +1,7 @@
 import React from "react";
 
 const styles = {
-    backgroundImage: `url("/images/john-wick.png")`,
+    backgroundImage: `url("/images/john-wick-jeaidqurrfx52d3u.jpg")`,
 };
 
 export default function Hero(props) {
