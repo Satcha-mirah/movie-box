@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function MovieCard(props) {
     const [genreEls, setGenreEls] = useState([]);
     const [isFavourite, setIsFavourite] = useState(false);
     const [hasLoaded, setHasLoaded] = useState(false);
+
 
     function getPicUrl(pic_path) {
         return `https://www.themoviedb.org/t/p/w220_and_h330_face${pic_path}`;
@@ -39,6 +41,8 @@ export default function MovieCard(props) {
             )
             .catch((err) => console.error(err));
     }, []);
+
+    console.log("Movie Card Page");
 
     return (
         <div className="relative">

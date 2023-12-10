@@ -1,37 +1,41 @@
+// "use client";
+
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import MovieCard from "./MovieCard";
+import { getMovieList, setMovieList } from "@/store/slice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function MovieList(props) {
-    const [movieData, setMovieData] = useState([]);
+    // const [movieData, setMovieData] = useState([]);
     const [hasFetched, setHasFetched] = useState(false);
     const [cantFetch, setCantFetch] = useState(false);
 
-    useEffect(() => {
-        const topMovies = {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_LIST_TOKEN}`,
-            },
+    const dispatch = useDispatch();
+
+
+    const movies = useSelector((state) => state.app.movieList);
+    console.log(movies);
+
+    useEffect(async () => {
+        // let url =
+        //     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+
+        const fetchTopMovies = async () => {
+            const response = await getMovieList();
+            console.log(response);
+
+            setHasFetched(true);
+            setCantFetch(false);
+            // setMovieData(response.results);
+            dispatch(setMovieList(response.results));
         };
 
-        fetch(
-            "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-            topMovies
-        )
-            .then((response) => response.json())
-            .then((response) => {
-                setHasFetched(true);
-                setCantFetch(false);
-                return setMovieData(response.results);
-            })
-            .catch((err) => {
-                setCantFetch(true);
-                return console.error(err);
-            });
+        fetchTopMovies();
     }, []);
 
-    const movieCardEls = movieData.slice(0, 10).map((data) => {
+    // const movieCardEls = movieData.slice(0, 10).map((data) => {
+    const movieCardEls = movies.slice(0, 10).map((data) => {
         return (
             <MovieCard
                 id={data.id}

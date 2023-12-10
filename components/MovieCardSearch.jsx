@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
+import { getMovieSearch, setMovieSearch } from "@/store/slice";
 
 export default function MovieCardSearch(props) {
     const [genreEls, setGenreEls] = useState([]);
@@ -10,35 +12,61 @@ export default function MovieCardSearch(props) {
         return `https://www.themoviedb.org/t/p/w220_and_h330_face${pic_path}`;
     }
 
-    useEffect(() => {
-        const genres = {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_SEARCH_TOKEN}`,
-            },
+    // useEffect(() => {
+    //     const fetchGenres = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 "https://api.themoviedb.org/3/genre/movie/list",
+    //                 {
+    //                     params: {
+    //                         language: "en",
+    //                     },
+    //                     headers: {
+    //                         accept: "application/json",
+    //                         Authorization: `Bearer ${process.env.NEXT_PUBLIC_SEARCH_TOKEN}`,
+    //                     },
+    //                 }
+    //             );
+
+    //             setGenreEls((prevEl) => {
+    //                 let test = props.genreId.map((genre) => {
+    //                     let obj = response.data.genres.find((genreArrObj) => {
+    //                         return genreArrObj.id === genre;
+    //                     });
+
+    //                     return obj.name;
+    //                 });
+
+    //                 return test;
+    //             });
+    //         } catch (err) {
+    //             console.error(err);
+    //         }
+    //     };
+
+    //     fetchGenres();
+    // }, []);
+
+    const dispatch = useDispatch();
+
+
+    const movies = useSelector((state) => state.app.movieSearch);
+    console.log(movies);
+
+    useEffect(async () => {
+        
+        const fetchMovieSearch = async () => {
+            const response = await getMovieSearch();
+            console.log(response);
+
+            setHasFetched(true);
+            setCantFetch(false);
+            dispatch(setMovieSearch(response.results));
         };
-        fetch(
-            "https://api.themoviedb.org/3/genre/movie/list?language=en",
-            genres
-        )
-            .then((response) => response.json())
-            .then((response) =>
-                // setting the array of genre elements from the api call
-                setGenreEls((prevEl) => {
-                    let test = props.genreId.map((genre) => {
-                        let obj = response.genres.find((genreArrObj) => {
-                            return genreArrObj.id === genre;
-                        });
 
-                        return obj.name;
-                    });
-
-                    return test;
-                })
-            )
-            .catch((err) => console.error(err));
+        fetchMovieSearch();
     }, []);
+
 
     return (
         <Link href={`/movies/${props.id}`}>
